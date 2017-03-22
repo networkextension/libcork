@@ -44,9 +44,12 @@
 #include <sys/param.h>
 #endif
 
-#if defined(__linux) || defined(__FreeBSD_kernel__) || defined(__GNU__)
-/* Do some Linux, kFreeBSD or GNU/Hurd specific autodetection. */
+#if defined(__linux) ||  defined(__GNU__) || defined(__CYGWIN__)
+/* Do some Linux,  or GNU/Hurd specific autodetection. */
 #include <libcork/config/linux.h>
+/* kFreeBSD */
+#elif  defined(__FreeBSD_kernel__)
+#include <libcork/config/bsd.h>
 
 #elif defined(__APPLE__) && defined(__MACH__)
 /* Do some Mac OS X-specific autodetection. */
